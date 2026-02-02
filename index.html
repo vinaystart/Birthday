@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Shruti ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Screen 1 -->
+<div class="card" id="screen1">
+  <h1>Hey ❤️</h1>
+  <p>Someone who loves you made this just for you…</p>
+  <button onclick="nextScreen(2)">Begin 💫</button>
+</div>
+
+<!-- Screen 2 -->
+<div class="card hidden" id="screen2">
+  <h1>A Little Memory 💭</h1>
+  <p>Do you remember the day we first talked?</p>
+  <button onclick="nextScreen(3)">Next →</button>
+</div>
+
+<!-- Screen 3 (Beach) -->
+<div class="screen hidden" id="screen3">
+  <div class="overlay-light">
+    <h1 class="beach-title">For You 💖</h1>
+    <p id="typing" class="beach-text"></p>
+    <p id="signature" class="signature">— Ninna, Vinaya ❤️</p>
+    <button onclick="goBirthday()">Open Your Birthday Surprise 🎁</button>
+  </div>
+  <div id="hearts"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

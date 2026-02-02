@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday 🎂</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="birthday-page">
+
+<!-- Confetti canvas -->
+<canvas id="confetti"></canvas>
+
+<div class="birthday-overlay">
+  <div class="birthday-content">
+    <img src="her.jpeg" alt="Her Photo" class="birthday-photo">
+
+    <h1>Happy Birthday 💖</h1>
+
+    <p>
+      Today is special because you were born.<br>
+      You make life brighter just by being you.
+    </p>
+
+    <button onclick="goSurprise()">One More Surprise 💫</button>
+  </div>
+</div>
+
+<script>
+function goSurprise() {
+  window.location.href = "surprise.html";
+}
+
+/* ========== CONFETTI BLAST ON LOAD ========== */
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const colors = ["#ff5f8a", "#ff85a2", "#ffd1dc", "#f3a6b6", "#ffcc70"];
+let pieces = [];
+
+function blast() {
+  pieces = [];
+  for (let i = 0; i < 180; i++) {
+    pieces.push({
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      r: Math.random() * 6 + 3,
+      dx: (Math.random() - 0.5) * 14,
+      dy: (Math.random() - 1) * 14,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      life: 120
+    });
+  }
+}
+
+function update() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  pieces.forEach((p, i) => {
+    p.x += p.dx;
+    p.y += p.dy;
+    p.dy += 0.3; // gravity
+    p.life--;
+
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (p.life <= 0) pieces.splice(i, 1);
+  });
+
+  requestAnimationFrame(update);
+}
+
+window.addEventListener("load", () => {
+  blast();
+  update();
+});
+</script>
+
+</body>
+</html>

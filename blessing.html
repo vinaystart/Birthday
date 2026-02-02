@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+  <meta charset="UTF-8">
+  <title>With Love & Blessings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="blessing-page">
+
+  <!-- Snow layer -->
+  <div id="snow"></div>
+
+  <!-- Background music -->
+  <audio id="blessingMusic" loop>
+    <source src="blessing-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Tap overlay (required to start music) -->
+  <div id="tapOverlay">
+    <p>Tap to continue 🤍</p>
+  </div>
+
+  <!-- Main content -->
+  <div class="blessing-container">
+    <img src="father.png" alt="With Love & Blessings" class="father-photo">
+
+    <div class="blessing-text">
+      <p>Happy Birthday magale…</p>
+
+      <p>
+        Nanna ashirvada nin mele yavaglu irutte.<br>
+        Nin jeevana yavaglu belaku mattu santoshadinda thumbirali.
+      </p>
+
+      <p>
+        Yella kasta kshanagalu ninna balige shakti kodali,<br>
+        yella chinna kshanagalu nin jeevanada smaraneyagali.
+      </p>
+
+      <p>
+        Sada kushi agiru, srushtaaa.<br>
+        Nin naguvalli nanna santhosha ide.
+      </p>
+    </div>
+  </div>
+
+<script>
+/* -------- Start music on first tap -------- */
+const overlay = document.getElementById("tapOverlay");
+const music = document.getElementById("blessingMusic");
+
+overlay.addEventListener("click", () => {
+  music.volume = 0.4;
+  music.play().catch(()=>{});
+  overlay.style.display = "none";
+});
+
+/* -------- Gentle snow effect -------- */
+const snowContainer = document.getElementById("snow");
+
+function createSnowflake() {
+  const snowflake = document.createElement("div");
+  snowflake.className = "snowflake";
+  snowflake.innerHTML = "❄";
+
+  snowflake.style.left = Math.random() * 100 + "vw";
+  snowflake.style.fontSize = (8 + Math.random() * 6) + "px";
+  snowflake.style.animationDuration = (10 + Math.random() * 6) + "s";
+  snowflake.style.opacity = Math.random() * 0.6 + 0.3;
+
+  snowContainer.appendChild(snowflake);
+
+  setTimeout(() => snowflake.remove(), 16000);
+}
+
+setInterval(createSnowflake, 900);
+</script>
+
+</body>
+</html>

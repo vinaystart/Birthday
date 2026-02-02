@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap');
+
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ================= GLOBAL ================= */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #f7c6d0, #f3a6b6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #5a1025;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ================= BUTTON ================= */
+button {
+  margin-top: 28px;
+  padding: 14px 38px;
+  border-radius: 40px;
+  border: none;
+  background: linear-gradient(135deg, #ff5f8a, #ff85a2);
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 20px rgba(255, 95, 138, 0.45);
+  transition: transform 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* ================= PAGE 1 & 2 ================= */
+.card {
+  background: linear-gradient(180deg, #f9b8c7, #f3a6b6);
+  padding: 36px;
+  border-radius: 26px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 18px 45px rgba(176, 48, 96, 0.35);
+}
+
+.card h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: #6a0f2b;
+}
+
+.card p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #5a1025;
+}
+
+/* ================= BEACH PAGE ================= */
+.screen {
+  position: fixed;
+  inset: 0;
+  background: url("beach.jpeg") center center / cover no-repeat;
+}
+
+/* Soft romantic overlay (no white) */
+.overlay-light {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(247, 198, 208, 0.45),
+    rgba(247, 198, 208, 0.2),
+    rgba(247, 198, 208, 0)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+}
+
+/* Beach text */
+.beach-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: #4a081d;
+  margin-bottom: 12px;
+}
+
+.beach-text {
+  max-width: 650px;
+  white-space: pre-line;
+  font-size: 16px;
+  line-height: 2;
+  color: #3a0516;
+  text-shadow: 0 2px 6px rgba(247,198,208,0.8);
+}
+
+/* Signature */
+.signature {
+  margin-top: 28px;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: #6a0f2b;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.signature.show {
+  opacity: 1;
+}
+
+/* ================= FLOATING HEARTS ================= */
+#hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 0; }
+  to { transform: translateY(-100vh); opacity: 0.8; }
+}
+
+/* ================= BIRTHDAY PAGE ================= */
+/* bg.jpeg fully visible – NO crop */
+.birthday-page {
+  position: fixed;
+  inset: 0;
+  background:
+    url("bg.jpg") center center / contain no-repeat,
+    linear-gradient(180deg, #f7c6d0, #f3a6b6);
+  overflow: hidden;
+}
+/* ================= CONFETTI CANVAS ================= */
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5; /* above background, below content */
+}
+
+/* Romantic tint */
+.birthday-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(247, 198, 208, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.birthday-content {
+  position: relative;
+  text-align: center;
+  max-width: 420px;
+  width: 90%;
+}
+
+/* Her round photo */
+.birthday-photo {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 18px;
+  box-shadow: 0 16px 35px rgba(176, 48, 96, 0.35);
+}
+
+.birthday-content h1 {
+  font-family: 'Playfair Display', serif;
+  color: #5a1025;
+}
+
+.birthday-content p {
+  color: #4a081d;
+  line-height: 1.8;
+}
+
+/* ================= SURPRISE PAGE ================= */
+.surprise-page {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #f7c6d0, #f3a6b6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================= BLESSING PAGE ================= */
+/* blessing-bg.jpg fully visible – NO crop */
+.blessing-page {
+  position: fixed;
+  inset: 0;
+  background:
+    url("blessing-bg.jpg") center center / contain no-repeat,
+    linear-gradient(180deg, #f7c6d0, #f3a6b6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Soft rose tint (no white) */
+.blessing-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(247, 198, 208, 0.55);
+}
+
+/* Tap overlay (for music start) */
+#tapOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(247, 198, 208, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  font-size: 18px;
+  color: #5a1025;
+  cursor: pointer;
+}
+
+/* Blessing content */
+.blessing-container {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+}
+
+/* Father photo */
+.father-photo {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 18px;
+  margin-bottom: 22px;
+  box-shadow: 0 18px 38px rgba(176, 48, 96, 0.35);
+}
+
+/* Blessing text */
+.blessing-text {
+  color: #4a081d;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.blessing-text p {
+  margin-bottom: 14px;
+}
+/* ================= BLESSING PAGE ================= */
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Page background – full image visible, no overflow */
+.blessing-page {
+  position: fixed;
+  inset: 0;
+  background:
+    url("blessing-bg.jpg") center center / contain no-repeat,
+    linear-gradient(180deg, #f7c6d0, #f3a6b6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Soft emotional tint */
+.blessing-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(247, 198, 208, 0.55);
+  z-index: 1;
+}
+
+/* Snow container */
+#snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Individual snowflakes */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: rgba(255,255,255,0.85);
+  user-select: none;
+  animation-name: snow-fall;
+  animation-timing-function: linear;
+}
+
+@keyframes snow-fall {
+  from { transform: translateY(0); opacity: 0; }
+  10% { opacity: 0.9; }
+  to { transform: translateY(110vh); opacity: 0; }
+}
+
+/* Tap overlay */
+#tapOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(247,198,208,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  font-size: 18px;
+  color: #5a1025;
+  cursor: pointer;
+}
+
+/* Content container */
+.blessing-container {
+  position: relative;
+  z-index: 3;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+}
+
+/* Father photo */
+.father-photo {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 18px;
+  margin-bottom: 22px;
+  box-shadow: 0 18px 38px rgba(176,48,96,0.35);
+}
+
+/* Blessing text */
+.blessing-text {
+  color: #4a081d;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.blessing-text p {
+  margin-bottom: 14px;
+}
