@@ -20,6 +20,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #5a1025;
   text-align: center;
 }
 
@@ -38,7 +39,7 @@ button {
   cursor: pointer;
   font-size: 14px;
   letter-spacing: 0.5px;
-  box-shadow: 0 8px 20px rgba(255,95,138,0.45);
+  box-shadow: 0 8px 20px rgba(255, 95, 138, 0.45);
   transition: transform 0.25s ease;
 }
 
@@ -53,7 +54,7 @@ button:hover {
   border-radius: 26px;
   width: 90%;
   max-width: 420px;
-  box-shadow: 0 18px 45px rgba(176,48,96,0.35);
+  box-shadow: 0 18px 45px rgba(176, 48, 96, 0.35);
 }
 
 .card h1 {
@@ -72,29 +73,35 @@ button:hover {
 .screen {
   position: fixed;
   inset: 0;
-  background: url("beach.jpeg") center / cover no-repeat;
+  background: url("beach.jpeg") center center / cover no-repeat;
 }
 
+/* Soft romantic overlay (no white) */
 .overlay-light {
   width: 100%;
   height: 100%;
   background: linear-gradient(
     to top,
-    rgba(247,198,208,0.45),
-    rgba(247,198,208,0.2),
-    rgba(247,198,208,0)
+    rgba(247, 198, 208, 0.45),
+    rgba(247, 198, 208, 0.2),
+    rgba(247, 198, 208, 0)
   );
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 32px;
 }
 
+/* Beach text */
+/* ================= BEACH PAGE TEXT FIX ================= */
+
 .beach-title {
   font-family: 'Playfair Display', serif;
   font-size: 28px;
-  color: #8b1b1b;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  color: #e4dfdd; /* dark warm brown */
+  margin-bottom: 12px;
+  text-shadow: 0 2px 10px rgba(255,255,255,0.8);
 }
 
 .beach-text {
@@ -102,16 +109,21 @@ button:hover {
   white-space: pre-line;
   font-size: 16px;
   line-height: 2;
-  color: #961818;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  color: #e9e3e1; /* almost black */
+  text-shadow:
+    0 2px 8px rgba(255,255,255,0.9),
+    0 0 2px rgba(0,0,0,0.2);
 }
 
+/* Signature */
 .signature {
   margin-top: 28px;
   font-family: 'Playfair Display', serif;
   font-size: 18px;
-  color: #ffffff;
+  color: #f7f1f0;
+  text-shadow: 0 2px 8px rgba(255,255,255,0.8);
 }
+
 
 /* ================= FLOATING HEARTS ================= */
 #hearts {
@@ -133,43 +145,58 @@ button:hover {
 }
 
 /* ================= BIRTHDAY PAGE ================= */
+/* bg.jpeg fully visible – NO crop */
 .birthday-page {
   position: fixed;
   inset: 0;
   background:
-    url("bg.jpg") center / contain no-repeat,
+    url("bg.jpg") center center / contain no-repeat,
     linear-gradient(180deg, #f7c6d0, #f3a6b6);
+  overflow: hidden;
 }
-
+/* ================= CONFETTI CANVAS ================= */
 #confetti {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 5;
+  z-index: 5; /* above background, below content */
 }
 
+/* Romantic tint */
 .birthday-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(247,198,208,0.45);
+  background: rgba(247, 198, 208, 0.45);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .birthday-content {
+  position: relative;
   text-align: center;
   max-width: 420px;
   width: 90%;
 }
 
+/* Her round photo */
 .birthday-photo {
   width: 220px;
   height: 220px;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 18px;
-  box-shadow: 0 16px 35px rgba(176,48,96,0.35);
+  box-shadow: 0 16px 35px rgba(176, 48, 96, 0.35);
+}
+
+.birthday-content h1 {
+  font-family: 'Playfair Display', serif;
+  color: #5a1025;
+}
+
+.birthday-content p {
+  color: #4a081d;
+  line-height: 1.8;
 }
 
 /* ================= SURPRISE PAGE ================= */
@@ -182,25 +209,111 @@ button:hover {
   align-items: center;
 }
 
-/* ================= BLESSING PAGE (FINAL) ================= */
+/* ================= BLESSING PAGE ================= */
+/* blessing-bg.jpg fully visible – NO crop */
 .blessing-page {
   position: fixed;
   inset: 0;
-  background: url("blessing-bg.jpg") center / cover no-repeat;
+  background:
+    url("father.png") center center / contain no-repeat,
+    linear-gradient(180deg, #f7c6d0, #f3a6b6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Soft rose tint (no white) */
+.blessing-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(247, 198, 208, 0.55);
+}
+
+/* Tap overlay (for music start) */
+#tapOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(247, 198, 208, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  font-size: 18px;
+  color: #5a1025;
+  cursor: pointer;
+}
+
+/* Blessing content */
+.blessing-container {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px; /* pushes content down */
+}
+
+/* Father photo */
+.father-photo {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 18px;
+
+  /* NEW */
+  margin-top:-10px;
+  margin-bottom: 28px;
+
+  box-shadow: 0 18px 38px rgba(0,0,0,0.45);
+}
+
+/* Blessing text */
+.blessing-text {
+  color: #4a081d;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.blessing-text p {
+  margin-bottom: 14px;
+}
+/* ================= BLESSING PAGE ================= */
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Page background – full image visible, no overflow */
+.blessing-page {
+  position: fixed;
+  inset: 0;
+  background:
+    url("blessing-bg.jpg") center center / contain no-repeat,
+    linear-gradient(180deg, #f7c6d0, #f3a6b6);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Soft emotional tint */
 .blessing-page::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(247, 198, 208, 0.55);
   z-index: 1;
 }
 
-/* Snow */
+/* Snow container */
 #snow {
   position: fixed;
   inset: 0;
@@ -208,15 +321,19 @@ button:hover {
   z-index: 2;
 }
 
+/* Individual snowflakes */
 .snowflake {
   position: absolute;
   top: -10px;
   color: rgba(255,255,255,0.85);
-  animation: snow-fall linear;
+  user-select: none;
+  animation-name: snow-fall;
+  animation-timing-function: linear;
 }
 
 @keyframes snow-fall {
   from { transform: translateY(0); opacity: 0; }
+  10% { opacity: 0.9; }
   to { transform: translateY(110vh); opacity: 0; }
 }
 
@@ -224,16 +341,17 @@ button:hover {
 #tapOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(247,198,208,0.9);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
-  color: #fff;
   font-size: 18px;
+  color: #5a1025;
+  cursor: pointer;
 }
 
-/* Blessing content */
+/* Content container */
 .blessing-container {
   position: relative;
   z-index: 3;
@@ -246,43 +364,49 @@ button:hover {
 .father-photo {
   width: 100%;
   max-width: 260px;
+  height: auto;
   border-radius: 18px;
-  margin-top: 60px;
-  margin-bottom: 28px;
-  box-shadow: 0 18px 38px rgba(0,0,0,0.45);
+  margin-bottom: 22px;
+  box-shadow: 0 18px 38px rgba(176,48,96,0.35);
 }
 
 /* Blessing text */
 .blessing-text {
-  color: #ffffff;
+  color: #af1711;
   font-size: 15px;
   line-height: 1.9;
-  animation: text-breathe 6s ease-in-out infinite;
 }
 
 .blessing-text p {
   margin-bottom: 14px;
 }
+/* ================= BLESSING TEXT GLOW EFFECT ================= */
 
-@keyframes text-breathe {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; text-shadow: 0 0 10px rgba(255,255,255,0.6); }
-  100% { opacity: 0.6; }
+.blessing-text {
+  animation: text-breathe 6s ease-in-out infinite;
 }
 
-/* Final Appa line */
-/* Final Appa signature – FORCE VISIBLE */
+@keyframes text-breathe {
+  0% {
+    opacity: 0.65;
+    text-shadow: none;
+  }
+  50% {
+    opacity: 1;
+    text-shadow:
+      0 0 8px rgba(255,255,255,0.6),
+      0 0 16px rgba(255,255,255,0.35);
+  }
+  100% {
+    opacity: 0.65;
+    text-shadow: none;
+  }
+}
+/* Final Appa signature (after all words) */
 .appa-sign {
-  margin-top: 24px;
+  margin-top: 28px;
   font-size: 15px;
   font-style: italic;
-  color: #ffffff;
-
-  position: relative;   /* 🔑 creates new stacking layer */
-  z-index: 5;           /* 🔑 above overlay & animation */
-
-  opacity: 1;           /* 🔑 never fades */
-  text-shadow:
-    0 0 6px rgba(255,255,255,0.6),
-    0 0 12px rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.5px;
 }
